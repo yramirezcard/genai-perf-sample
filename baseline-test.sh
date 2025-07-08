@@ -46,6 +46,7 @@ runBenchmark() {
         genai-perf profile \
             -m $MODEL \
             --endpoint-type chat \
+            --service-kind openai \
             --streaming \
             -u $ENDPOINT \
             --synthetic-input-tokens-mean $INPUT_SEQUENCE_LENGTH \
