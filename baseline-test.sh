@@ -1,5 +1,4 @@
 
-
 genai-perf profile\
     -m $MODEL \
     --endpoint-type chat \
@@ -24,9 +23,6 @@ declare -A useCases
 useCases["Translation"]="200/200"
 useCases["Text classification"]="200/5"
 useCases["Text summary"]="1000/200"
-useCases["Translation2"]="500/2000"
-useCases["Text classification2"]="1000/1000"
-useCases["Text summary2"]="5000/500"
 # Function to execute genAI-perf with the input/output lengths as arguments
 runBenchmark() {
     local description="$1"
@@ -41,7 +37,7 @@ runBenchmark() {
         local INPUT_SEQUENCE_STD=0
         local OUTPUT_SEQUENCE_LENGTH=$outputLength
         local CONCURRENCY=$concurrency
-        local MODEL=meta/llama-3.1-8b-instruct
+        local MODEL=$MODEL
 
         genai-perf profile \
             -m $MODEL \
