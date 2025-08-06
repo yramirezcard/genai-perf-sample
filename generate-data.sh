@@ -1,0 +1,21 @@
+
+genai-perf profile\
+    -m $MODEL \
+    --endpoint-type chat \
+    --service-kind openai \
+    --streaming \
+    -u $ENDPOINT \
+    --synthetic-input-tokens-mean $INPUT_SEQUENCE_LENGTH \
+    --synthetic-input-tokens-stddev $INPUT_SEQUENCE_STD \
+    --concurrency $CONCURRENCY \
+    --output-tokens-mean $OUTPUT_SEQUENCE_LENGTH \
+    --extra-inputs max_tokens:$OUTPUT_SEQUENCE_LENGTH \
+    --extra-inputs min_tokens:$OUTPUT_SEQUENCE_LENGTH \
+    --extra-inputs ignore_eos:true \
+    --tokenizer $TOKENIZER \
+    --artifact-dir $ARTIFACT_DIR \
+    --request-count $REQUEST_COUNT \
+    -- \
+    -v \
+    -H "Authorization: Bearer $ENDPOINT_TOKEN" \
+    --max-threads=256
